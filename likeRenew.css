@@ -1,5 +1,5 @@
 .box_left {
-  text-align: center;
+  text-align: center !important;
 }
 
 .u_likeit_list_module {
