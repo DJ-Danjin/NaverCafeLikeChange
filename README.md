@@ -1,6 +1,6 @@
 # 네이버 카페 좋아요 변경
 
-![image](https://github.com/DJ-Danjin/NaverCafeLikeChange/assets/85267238/37a60c09-f262-4f80-9f51-b77df3f562db)
+![image](https://github.com/DJ-Danjin/NaverCafeLikeChange/assets/85267238/626c2050-7dbc-46e3-beb0-ca484298a416)
 
 
 ## 소개
