@@ -3,7 +3,7 @@
 // @name:ko        네이버 카페 좋아요 변경
 // @name:en        Naver Cafe Like Change
 // @namespace    https://github.com/DJ-Danjin/NaverCafeLikeChange
-// @version      2024-03-02-2
+// @version      2024-03-02-3
 // @description    좋아요 버튼을 트게더스럽게 변경
 // @description:ko 좋아요 버튼을 트게더스럽게 변경
 // @description:en Change like button looks like tgd
@@ -84,15 +84,18 @@
     likeRenew.appendChild(document.createTextNode(renewStyle));
     document.head.appendChild(likeRenew);
     console.log("Append likeRenew");
+
+    let favi = document.createElement("link");
+    favi.rel = "stylesheet";
+    favi.type = "text/css";
+    favi.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+    document.head.appendChild(favi);
+    console.log("Append Favi");
   }
 
   let target = document.querySelector("body");
 
   let observer = new MutationObserver((mutations) => {
-
-    let appHeight = document.getElementById('app');
-    let maxHeight = document.getElementById('cafe_main');
-    maxHeight.style.maxHeight = appHeight.offsetHeight;
 
     let boxLeft = document.querySelector(".ReplyBox .box_left");
     let likeArticle = document.querySelector(".ReplyBox .box_left .like_article");
@@ -101,13 +104,6 @@
     let likeLabel = document.querySelector(".ReplyBox .box_left .like_article a ._label");
 
     if (boxLeft !== null && likeArticle !== null && likeText !== null && likeit !== null && !likeLabel.classList.contains("renewLikeLabel")) {
-      let favi = document.createElement("link");
-      favi.rel = "stylesheet";
-      favi.type = "text/css";
-      favi.href = "https://cdn-assets.tgd.kr/css/tgd.layout.min.css?v=b351";
-      document.head.appendChild(favi);
-      console.log("Append Favi");
-
       let thumbs = document.createElement("i");
       thumbs.classList.add("fa");
       thumbs.classList.add("fa-thumbs-up");
