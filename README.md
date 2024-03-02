@@ -1,6 +1,6 @@
 # 네이버 카페 좋아요 변경
 
-![image](https://github.com/DJ-Danjin/NaverCafeLikeChange/assets/85267238/37a60c09-f262-4f80-9f51-b77df3f562db)
+![image](https://github.com/DJ-Danjin/NaverCafeLikeChange/assets/85267238/626c2050-7dbc-46e3-beb0-ca484298a416)
 
 
 ## 소개
@@ -35,22 +35,22 @@
 
 참고 : 이미 네이버 카페를 열어둔 상태일 경우 페이지를 새로고침(F5)해야 작동합니다.
 <br/><br/>
-참고2 : 해당 스크립트를 적용할 경우 댓글 아이콘이 사라집니다.
+참고2 : **해당 스크립트를 적용할 경우 댓글 아이콘이 사라집니다.**
 <br/><br/><br/>
 
 ## 현재 문제점
 
-**-**
+**발견되지 않음**
 <br/><br/>
 
--
+발견시 제보 부탁드립니다.
 <br/><br/>
 
-현재로써는 아래와 같은 방법을 이용해 해결 가능합니다.
+~~현재로써는 아래와 같은 방법을 이용해 해결 가능합니다.~~
 
-- **-** : -
+~~- **A** : Resolve Problem~~
 
-- **-** : -
+~~- **B** : Resolve Problem~~
 <br/><br/><br/>
 
 ## 기여하기
