@@ -1,12 +1,12 @@
-.box_left {
-  text-align: center !important;
+.renewBoxLeft {
+  text-align: center;
 }
 
-.u_likeit_list_module {
+.renewLikeIt {
   margin-right: 0;
 }
 
-.like_article {
+.renewLikeArticle {
   color: #5cb85c;
   background-color: rgba(0, 0, 0, 0);
   border-color: #5CB860;
@@ -32,17 +32,17 @@
   text-shadow: none;
 }
 
-.like_article:hover {
+.renewLikeArticle:hover {
   color: #ffffff;
   background-color: #449d44;
   border-color: #255625;
 }
 
-.like_article a:hover {
+.renewLikeText:hover {
   color: #ffffff;
   text-decoration: none;
 }
 
-._label {
+.renewLikeLabel {
   margin-left: 3px;
 }
