@@ -3,7 +3,7 @@
 // @name:ko        네이버 카페 좋아요 변경
 // @name:en        Naver Cafe Like Change
 // @namespace    https://github.com/DJ-Danjin/NaverCafeLikeChange
-// @version      2024-03-02 2
+// @version      2024-03-02-2
 // @description    좋아요 버튼을 트게더스럽게 변경
 // @description:ko 좋아요 버튼을 트게더스럽게 변경
 // @description:en Change like button looks like tgd
