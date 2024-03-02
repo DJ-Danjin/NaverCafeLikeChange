@@ -1,6 +1,6 @@
 # 네이버 카페 좋아요 변경
 
-![image](https://github.com/DJ-Danjin/NaseongKimTgdShortcut/assets/85267238/248b156f-c6a7-4f2b-b1f8-0e5dd06a83b0)
+![image](https://github.com/DJ-Danjin/NaverCafeLikeChange/assets/85267238/1fd4e299-13a6-4446-9d0f-8a80399af4f7)
 
 
 ## 소개
