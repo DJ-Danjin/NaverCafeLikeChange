@@ -3,7 +3,7 @@
 // @name:ko        네이버 카페 좋아요 변경
 // @name:en        Naver Cafe Like Change
 // @namespace    https://github.com/DJ-Danjin/NaverCafeLikeChange
-// @version      2024-03-02-3
+// @version      2024-03-05-1
 // @description    좋아요 버튼을 트게더스럽게 변경
 // @description:ko 좋아요 버튼을 트게더스럽게 변경
 // @description:en Change like button looks like tgd
@@ -32,7 +32,6 @@
       background-color: rgba(0, 0, 0, 0);
       border-color: #5CB860;
       display: inline-block;
-      padding: 6px 12px;
       margin-bottom: 0;
       font-size: 14px;
       font-weight: 400;
@@ -56,6 +55,7 @@
     .renewLikeText {
       color: #5cb85c;
       text-decoration: none;
+      padding: 6px 12px !important;
     }
 
     .renewLikeText:focus {
