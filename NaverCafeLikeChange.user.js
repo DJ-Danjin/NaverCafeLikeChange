@@ -3,138 +3,160 @@
 // @name:ko        네이버 카페 좋아요 변경
 // @name:en        Naver Cafe Like Change
 // @namespace    https://github.com/DJ-Danjin/NaverCafeLikeChange
-// @version      2024-03-05-1
+// @version      2026-04-20-2
 // @description    좋아요 버튼을 트게더스럽게 변경
 // @description:ko 좋아요 버튼을 트게더스럽게 변경
 // @description:en Change like button looks like tgd
-// @author       DJ-Danjin
+// @author       DJ-Danjin / Edited by Gemini
 // @match        https://cafe.naver.com/*
 // @icon         https://cafe.naver.com/favicon.ico?2
 // @updateURL    https://github.com/DJ-Danjin/NaverCafeLikeChange/raw/main/NaverCafeLikeChange.user.js
 // @downloadURL  https://github.com/DJ-Danjin/NaverCafeLikeChange/raw/main/NaverCafeLikeChange.user.js
 // @grant        none
+// @run-at       document-end
 // ==/UserScript==
 
 (function () {
+  'use strict';
 
-  window.onload = function () {
-    const renewStyle = `
-    .renewBoxLeft {
-      text-align: center;
-    }
-    
-    .renewLikeIt {
-      margin-right: 0 !important;
-    }
-    
-    .renewLikeArticle {
-      color: #5cb85c;
-      background-color: rgba(0, 0, 0, 0);
-      border-color: #5CB860;
-      display: inline-block;
-      margin-bottom: 0;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.42857143;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: middle;
-      touch-action: manipulation;
-      cursor: pointer;
-      user-select: none;
-      background-image: none;
-      border: 1px solid #5cb85c;
-      border-radius: 4px;
-      box-sizing: border-box;
-      letter-spacing: normal;
-      word-spacing: normal;
-      text-indent: 0px;
-      text-shadow: none;
-    }
+  const renewStyle = `
+      /* 좋아요 컨테이너 정렬 */
+      .ReplyBox .box_left {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: center !important;
+          margin: 15px 0 !important;
+          visibility: visible !important;
+      }
 
-    .renewLikeText {
-      color: #5cb85c;
-      text-decoration: none;
-      padding: 6px 12px !important;
-    }
+      /* 기본 좋아요 버튼 스타일 */
+      .renewLikeArticle {
+          color: #5cb85c !important;
+          background-color: transparent !important;
+          border: 1px solid #5cb85c !important;
+          border-radius: 4px !important;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: inline-flex !important;
+          align-items: center;
+          text-decoration: none !important;
+          font-family: inherit !important;
+      }
 
-    .renewLikeText:focus {
-      color: #5cb85c;
-      text-decoration: none;
-    }
-    
-    .renewLikeArticle:hover {
-      color: #ffffff;
-      background-color: #449d44;
-      border-color: #255625;
-    }
-    
-    .renewLikeText:hover {
-      color: #ffffff;
-      text-decoration: none;
-    }
-    
-    .renewLikeLabel {
-      margin-left: 3px !important;
-    }
-    `;
+      /* 마우스 호버 시 색상 반전 */
+      .renewLikeArticle:hover {
+          background-color: #449d44 !important;
+          border-color: #255625 !important;
+      }
 
-    const likeRenew = document.createElement("style");
-    likeRenew.type = "text/css";
-    likeRenew.appendChild(document.createTextNode(renewStyle));
-    document.head.appendChild(likeRenew);
-    console.log("Append likeRenew");
+      .renewLikeText {
+          color: #5cb85c !important;
+          padding: 6px 12px !important;
+          display: flex !important;
+          align-items: center;
+          gap: 6px;
+          text-decoration: none !important;
+          font-family: inherit !important;
+          font-size: 14px !important;
+          font-weight: 400 !important;
+      }
 
-    let favi = document.createElement("link");
-    favi.rel = "stylesheet";
-    favi.type = "text/css";
-    favi.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
-    document.head.appendChild(favi);
-    console.log("Append Favi");
-  }
+      .u_cnt {
+          font-style: normal !important;
+          margin-left: 4px;
+          color: #5cb85c !important;
+          font-family: inherit !important;
+          font-size: 14px !important;
+          font-weight: 600 !important;
+      }
 
-  let target = document.querySelector("body");
+      /* [핵심] 내가 좋아요를 누른 상태 (.on 클래스)일 때 스타일 반전 유지 */
+      .renewLikeArticle .renewLikeText.on,
+      .renewLikeArticle .renewLikeText.on .u_cnt {
+          color: #ffffff !important; /* 글자 및 숫자 흰색 */
+      }
 
-  let observer = new MutationObserver((mutations) => {
+      .renewLikeArticle:has(.on) {
+          background-color: #5cb85c !important; /* 배경색 초록색으로 고정 */
+          border-color: #449d44 !important;
+      }
 
-    let boxLeft = document.querySelector(".ReplyBox .box_left");
-    let likeArticle = document.querySelector(".ReplyBox .box_left .like_article");
-    let likeText = document.querySelector(".ReplyBox .box_left .like_article a");
-    let likeit = document.querySelector(".ReplyBox .box_left .u_likeit_list_module");
-    let likeLabel = document.querySelector(".ReplyBox .box_left .like_article a ._label");
+      .renewLikeArticle:hover .renewLikeText,
+      .renewLikeArticle:hover .u_cnt {
+          color: #ffffff !important;
+      }
 
-    if (boxLeft !== null && likeArticle !== null && likeText !== null && likeit !== null && !likeLabel.classList.contains("renewLikeLabel")) {
-      let thumbs = document.createElement("i");
-      thumbs.classList.add("fa");
-      thumbs.classList.add("fa-thumbs-up");
-      likeText.insertBefore(thumbs, likeText.firstChild);
-      console.log("Edit icon");
+      /* 불필요 요소 제거 */
+      .like_count_btn, .button_like_list, .u_ico, .u_likeit_list_module:after,
+      .ReplyBox .box_left .button_comment, .u_likeit_list_module .u_txt._count {
+          display: none !important;
+      }
+  `;
 
-      boxLeft.classList.add("renewBoxLeft");
-      likeArticle.classList.add("renewLikeArticle");
-      likeText.classList.add("renewLikeText");
-      likeit.classList.add("renewLikeIt");
-      likeLabel.classList.add("renewLikeLabel");
-    }
-
-    let likeList = document.querySelector(".ReplyBox .box_left .button_like_list");
-    let comment = document.querySelector(".ReplyBox .box_left .button_comment");
-    let ico = document.querySelector(".ReplyBox .box_left .like_article .u_ico");
-    if (likeList !== null && comment !== null && ico !== null) {
-      likeList.remove();
-      comment.remove();
-      ico.remove();
-      console.log("Remove Tag");
-    }
-
-  })
-
-  let option = {
-    attributes: true,
-    childList: true,
-    characterData: true
+  const injectAssets = () => {
+      if (!document.getElementById('naver-like-style')) {
+          const styleTag = document.createElement("style");
+          styleTag.id = 'naver-like-style';
+          styleTag.textContent = renewStyle;
+          document.head.appendChild(styleTag);
+      }
+      if (!document.querySelector('link[href*="font-awesome"]')) {
+          const faTag = document.createElement("link");
+          faTag.rel = "stylesheet";
+          faTag.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+          document.head.appendChild(faTag);
+      }
   };
 
-  observer.observe(target, option);
+  const transformLikeButton = () => {
+      const boxLeft = document.querySelector(".ReplyBox .box_left");
+      if (!boxLeft) return;
 
+      const likeitModule = boxLeft.querySelector(".u_likeit_list_module");
+      const likeAnchor = boxLeft.querySelector("a.u_likeit_list_btn");
+      const likeLabel = boxLeft.querySelector("._label");
+      const likeCount = boxLeft.querySelector(".u_cnt");
+
+      if (likeAnchor && !likeAnchor.classList.contains("renewLikeText")) {
+          boxLeft.classList.add("renewBoxLeft");
+          likeitModule.classList.add("renewLikeArticle");
+          likeAnchor.classList.add("renewLikeText");
+
+          if (likeLabel) {
+              likeLabel.innerText = "좋아요";
+              likeLabel.classList.add("renewLikeLabel");
+          }
+
+          if (!likeAnchor.querySelector(".fa-thumbs-up")) {
+              const thumbs = document.createElement("i");
+              thumbs.className = "fa fa-thumbs-up";
+              likeAnchor.insertBefore(thumbs, likeAnchor.firstChild);
+          }
+
+          if (likeCount) {
+              likeAnchor.appendChild(likeCount);
+          }
+      }
+  };
+
+  injectAssets();
+
+  if (document.readyState === 'complete') {
+      transformLikeButton();
+  } else {
+      window.addEventListener('load', transformLikeButton);
+  }
+
+  const observer = new MutationObserver((mutations) => {
+      for (let mutation of mutations) {
+          if (mutation.addedNodes.length) {
+              transformLikeButton();
+          }
+      }
+  });
+
+  observer.observe(document.body, {
+      childList: true,
+      subtree: true
+  });
 })();
