@@ -170,7 +170,7 @@
       }
   });
 
-  GM_registerMenuCommand("⚙️ 이스터에그 설정 열기", openSettingsPopup);
+  GM_registerMenuCommand("이스터에그 설정 열기 (팝업)", openSettingsPopup);
 
   const createEasterEggContainers = () => {
       if (settings.cloneEgg && !document.getElementById('easter-egg-container-clone')) {
